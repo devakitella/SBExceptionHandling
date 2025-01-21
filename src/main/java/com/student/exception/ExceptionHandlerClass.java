@@ -11,4 +11,9 @@ public class ExceptionHandlerClass {
 	public ResponseEntity<String> handleStudentNotFoundException(StudentNotFoundException studentException) {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(studentException.getMessage());
 	}
+	
+	@ExceptionHandler(StudentAlreadyExistsException.class)
+	public ResponseEntity<String> handleStudentAlreadyExistsException(StudentAlreadyExistsException studentException) {
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(studentException.getMessage());
+	}
 }

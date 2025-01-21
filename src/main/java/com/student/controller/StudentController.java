@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.student.entity.StudentDetails;
+import com.student.exception.StudentAlreadyExistsException;
 import com.student.exception.StudentNotFoundException;
 import com.student.service.StudentService;
 
@@ -21,7 +22,7 @@ public class StudentController {
 	StudentService studentService;
 	
 	@PostMapping(value = "/insert")
-	public String insertData(@RequestBody StudentDetails studentDetails) {
+	public String insertData(@RequestBody StudentDetails studentDetails) throws StudentAlreadyExistsException {
 		studentService.insertData(studentDetails);
 		return "Record is inserted with - " + studentDetails.getStudentId();
 	}
